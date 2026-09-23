@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>James Rivera</title>
+<style>
+:root{color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:#ffffff;font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Monaco,'Cascadia Code','Roboto Mono',monospace;color:#3f3f46;-webkit-font-smoothing:antialiased}
+h1,h2,.sans{font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,sans-serif}
+a{color:#3f3f46;text-decoration:none;border-bottom:1px solid transparent}
+a:hover{color:#18181b;border-bottom-color:#18181b}
+.wrap{width:100%;display:flex;flex-direction:column;align-items:center;padding:72px 24px 120px}
+.col{width:100%;max-width:680px;display:flex;flex-direction:column}
+.header{display:flex;justify-content:space-between;align-items:flex-start;gap:32px}
+.h-left{display:flex;flex-direction:column;gap:12px}
+h1{margin:0;font-weight:700;font-size:34px;line-height:1.1;letter-spacing:-0.02em;color:#09090b}
+.tagline{margin:0;font-size:15px;color:#52525b;line-height:1.55;max-width:440px}
+.loc{display:flex;align-items:center;gap:7px;font-size:13px;color:#71717a}
+.icons{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.icon{border:1px solid #e4e4e7;border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#3f3f46}
+.icon:hover{background:#f4f4f5;border-color:#d4d4d8;color:#18181b}
+.avatar{flex-shrink:0;width:100px;height:100px;border-radius:14px;border:1px solid #e4e4e7;display:flex;align-items:center;justify-content:center;font-family:ui-sans-serif,system-ui,sans-serif;font-size:30px;font-weight:600;color:#a1a1aa;background:#f4f4f5}
+section{display:flex;flex-direction:column;margin-top:44px}
+h2{margin:0 0 14px;font-weight:700;font-size:22px;color:#09090b}
+.body{margin:0;font-size:14px;line-height:1.7;color:#52525b;max-width:620px}
+.entry{display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
+.entry:last-child{margin-bottom:0}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.org{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.name{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:17px;color:#09090b}
+.pill{font-size:11px;color:#3f3f46;background:#f4f4f5;border-radius:5px;padding:2px 8px}
+.date{font-size:13px;color:#71717a;white-space:nowrap}
+.role{font-size:14px;color:#18181b}
+.desc{margin:4px 0 0;font-size:14px;line-height:1.65;color:#52525b;max-width:600px}
+.link{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:16px;color:#09090b;border-bottom:1px solid transparent;align-self:flex-start}
+.proj{display:flex;flex-direction:column;gap:5px;margin-bottom:18px}
+.proj:last-child{margin-bottom:0}
+.edu{display:flex;flex-direction:column;gap:3px;margin-bottom:18px}
+.edu:last-child{margin-bottom:0}
+.edu .name{font-size:16px}
+.edu .sub{font-size:14px;color:#52525b}
+.grant{display:flex;gap:10px;font-size:14px;line-height:1.55;color:#52525b;max-width:600px}
+.dash{color:#a1a1aa;flex-shrink:0}
+.ach-group{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.ach-group:last-child{margin-bottom:0}
+.ach-label{font-size:12px;color:#71717a}
+.ach-items{display:flex;flex-direction:column;gap:8px}
+.ach-item{display:flex;gap:10px;font-size:14px;line-height:1.55;color:#3f3f46;max-width:600px}
+.travel{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.travel .link{font-size:16px}
+.travels{display:flex;flex-direction:column;gap:10px}
+/* carousel */
+.car{display:flex;align-items:center;gap:12px}
+.arrow{flex-shrink:0;width:34px;height:34px;border:1px solid #e4e4e7;border-radius:8px;background:#fff;color:#3f3f46;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.arrow:hover{border-color:#a1a1aa}
+.viewport{flex-grow:1;overflow:hidden}
+.track{display:flex;transition:transform .35s ease}
+.cell{flex:0 0 8.3333%;box-sizing:border-box}
+.book{height:132px;margin:0 6px;border:1px solid #e4e4e7;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;box-sizing:border-box}
+.b-month{font-size:12px;color:#71717a}
+.b-title{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:15px;line-height:1.35;color:#09090b}
+.b-author{font-size:12px;color:#71717a}
+.dots{display:flex;justify-content:center;gap:7px;margin-top:16px}
+.dot{width:7px;height:7px;border-radius:50%;border:none;padding:0;cursor:pointer;background:#d4d4d8}
+.dot.on{background:#09090b}
+@media (max-width:560px){.cell{flex-basis:16.6666%}.car .viewport .track{width:600%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="col">
+
+    <div class="header">
+      <div class="h-left">
+        <h1>James Rivera</h1>
+        <p class="tagline">CS Master's student at Georgia Tech focused in blockchain and cryptography, American Karate black belt, advanced Mandarin Chinese speaker</p>
+        <div class="loc">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20"/></svg>
+          <span>Atlanta, GA, EST</span>
+        </div>
+        <div class="icons">
+          <a class="icon" href="mailto:james@example.com" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg></a>
+          <a class="icon" href="https://github.com/jameslrivera" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.13-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.88.12 3.18.77.84 1.23 1.92 1.23 3.23 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.56 22.29 24 17.8 24 12.5 24 5.87 18.63.5 12 .5Z"/></svg></a>
+          <a class="icon" href="https://www.linkedin.com/in/james-rivera-607872212/" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0Z"/></svg></a>
+        </div>
+      </div>
+      <div class="avatar">JR</div>
+    </div>
+
+    <section>
+      <h2>Interests</h2>
+      <p class="body">Enjoy learning about East Asian culture and language. Currently researching in the foundational mathematics behind verifiable computation and zero-knowledge proofs. Curious about post-quantum cryptography and decentralized P2P networks. Active CTF competitor, competing in over a dozen competitions, specializing in smart contract exploitation and cryptography.</p>
+    </section>
+
+    <section>
+      <h2>Work Experience</h2>
+      <div class="entry">
+        <div class="row">
+          <div class="org"><a class="name" href="https://3vi.us">3Vi, Inc.</a><span class="pill">Remote</span></div>
+          <span class="date">Dec 2025 - Aug 2026</span>
+        </div>
+        <div class="role">Software Engineer I / Cybersecurity Specialist I</div>
+        <p class="desc">Supported the development of cloud solutions and network topologies for critical infrastructure projects.</p>
+      </div>
+      <div class="entry">
+        <div class="row">
+          <div class="org"><a class="name" href="https://3vi.us">3Vi, Inc.</a><span class="pill">Remote</span></div>
+          <span class="date">Jun 2024 - Sep 2024</span>
+        </div>
+        <div class="role">Software Engineering Intern</div>
+        <p class="desc">Led development of internal applications to improve efficiency among the engineering teams.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <div class="proj">
+        <a class="link" href="https://github.com/jameslrivera/CICD-Pipeline-Lab">CI/CD Pipeline Lab</a>
+        <p class="desc">Personal DevOps pipeline project built using Docker, Kubernetes, Terraform, Helm, GitLab CI, and GitHub Actions.</p>
+      </div>
+      <div class="proj">
+        <a class="link" href="https://github.com/jameslrivera/personal-soc-lab">Personal SOC Lab</a>
+        <p class="desc">Virtual SOC lab using the Elastic Stack, Docker, and Elastic EDR to monitor and attack Kali and Windows VMs.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="edu">
+        <div class="row"><span class="name">Georgia Institute of Technology</span><span class="date">expected 2028</span></div>
+        <div class="sub">M.S. Computer Science</div>
+      </div>
+      <div class="edu">
+        <div class="row"><span class="name">College of Coastal Georgia</span><span class="date">in progress</span></div>
+        <div class="sub">B.S. Mathematics — researcher under Dr. Yeager focused on zero-knowledge proofs</div>
+      </div>
+      <div class="edu">
+        <div class="row"><span class="name">University of Georgia</span><span class="date">Summer 2025</span></div>
+        <div class="sub">B.S. Computer Science, minor in Chinese Language and Literature</div>
+      </div>
+      <div class="edu">
+        <div class="row"><span class="name">National Taiwan University</span><span class="date">Jan 2025 - Jun 2025</span></div>
+        <div class="sub">Computer Science and Chinese Language exchange program</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Organizations</h2>
+      <div><a class="link" href="https://thehackpack.org">University of Georgia Competitive Hacking Team</a></div>
+    </section>
+
+    <section>
+      <h2>Achievements</h2>
+      <div class="ach-group">
+        <div class="ach-label">Competitions</div>
+        <div class="ach-items">
+          <div class="ach-item"><span class="dash">—</span><span><span style="font-weight:700;color:#09090b">National Cyber League Spring 2026 Individual Game</span>, 79th in nation</span></div>
+          <div class="ach-item"><span class="dash">—</span><span><span style="font-weight:700;color:#09090b">Georgia Tech TkCTF 2024</span>, 6th — UGA's A Team</span></div>
+          <div class="ach-item"><span class="dash">—</span><span><span style="font-weight:700;color:#09090b">NSA Codebreaker Challenge 2024–2025</span>, UGA 16th in nation</span></div>
+          <div class="ach-item"><span class="dash">—</span><span><span style="font-weight:700;color:#09090b">NCAE Cyber Games 2025</span>, 2nd in SEC — UGA's Blue Team</span></div>
+        </div>
+      </div>
+      <div class="ach-group">
+        <div class="ach-label">Certifications</div>
+        <div class="ach-items">
+          <div class="ach-item"><span class="dash">—</span><span>CompTIA Security+</span></div>
+        </div>
+      </div>
+      <div class="ach-group">
+        <div class="ach-label">Martial Arts</div>
+        <div class="ach-items">
+          <div class="ach-item"><span class="dash">—</span><span>Black Belt, American Karate — Newbern's Self Defense School</span></div>
+          <div class="ach-item"><span class="dash">—</span><span>Blue Belt, Brazilian Jiu-Jitsu — Divine Jiu Jitsu</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Reading</h2>
+      <div class="car">
+        <button class="arrow" id="prev" aria-label="Previous months"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="viewport"><div class="track" id="track"></div></div>
+        <button class="arrow" id="next" aria-label="Next months"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+      <div class="dots" id="dots"></div>
+    </section>
+
+    <section>
+      <h2>Travels</h2>
+      <div class="travels">
+        <div class="travel"><a class="link" href="japan.html">Japan</a><span class="date">Jun - Jul 2025</span></div>
+        <div class="travel"><a class="link" href="taiwan.html">Taiwan</a><span class="date">Jan - Jun 2025</span></div>
+        <div class="travel"><a class="link" href="thailand.html">Thailand</a><span class="date">May 2025</span></div>
+        <div class="travel"><a class="link" href="hongkong.html">Hong Kong</a><span class="date">Jun 2025</span></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var books=[
+    {month:'January',title:'Unbeatable Mind',author:'Mark Divine'},
+    {month:'February',title:'The Art of Extraordinary Confidence',author:'Aziz Gazipura'},
+    {month:'March',title:'Wisdom of the Bullfrog',author:'William H. McRaven'},
+    {month:'April',title:'Thinking, Fast and Slow',author:'Daniel Kahneman'},
+    {month:'May',title:'Extreme Ownership',author:'Jocko Willink & Leif Babin'},
+    {month:'June',title:'Peak',author:'Roland Smith'},
+    {month:'July',title:'The Undoing Project',author:'Michael Lewis'},
+    {month:'August',title:'The Three-Body Problem',author:'Cixin Liu'},
+    {month:'September',title:'Freedom of Money',author:'Chaopeng Zhao'},
+    {month:'October',title:'',author:''},
+    {month:'November',title:'',author:''},
+    {month:'December',title:'',author:''}
+  ];
+  var perPage=3, pages=Math.ceil(books.length/perPage), page=0;
+  var track=document.getElementById('track');
+  var dotsEl=document.getElementById('dots');
+  function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+  track.style.width=(pages*100)+'%';
+  books.forEach(function(b){
+    var cell=document.createElement('div');cell.className='cell';
+    cell.style.flexBasis=(100/books.length)+'%';
+    cell.innerHTML='<div class="book"><div class="b-month">'+esc(b.month)+'</div><div class="b-title">'+esc(b.title)+'</div>'+(b.author?'<div class="b-author">'+esc(b.author)+'</div>':'')+'</div>';
+    track.appendChild(cell);
+  });
+  for(var i=0;i<pages;i++){(function(idx){var d=document.createElement('button');d.className='dot';d.setAttribute('aria-label','Go to page '+(idx+1));d.onclick=function(){page=idx;render();};dotsEl.appendChild(d);})(i);}
+  function render(){
+    track.style.transform='translateX(-'+(page*(100/pages))+'%)';
+    var ds=dotsEl.children;for(var j=0;j<ds.length;j++){ds[j].className='dot'+(j===page?' on':'');}
+  }
+  document.getElementById('prev').onclick=function(){page=(page-1+pages)%pages;render();};
+  document.getElementById('next').onclick=function(){page=(page+1)%pages;render();};
+  render();
+})();
+</script>
+</body>
+</html>
