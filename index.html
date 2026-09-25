@@ -4,203 +4,323 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>James Rivera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
-:root{color-scheme:light}
-*{box-sizing:border-box}
-body{margin:0;background:#ffffff;font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Monaco,'Cascadia Code','Roboto Mono',monospace;color:#3f3f46;-webkit-font-smoothing:antialiased}
-h1,h2,.sans{font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,sans-serif}
-a{color:#3f3f46;text-decoration:none;border-bottom:1px solid transparent}
-a:hover{color:#18181b;border-bottom-color:#18181b}
-.wrap{width:100%;display:flex;flex-direction:column;align-items:center;padding:72px 24px 120px}
-.col{width:100%;max-width:680px;display:flex;flex-direction:column}
-.header{display:flex;justify-content:space-between;align-items:flex-start;gap:32px}
-.h-left{display:flex;flex-direction:column;gap:12px}
-h1{margin:0;font-weight:700;font-size:34px;line-height:1.1;letter-spacing:-0.02em;color:#09090b}
-.tagline{margin:0;font-size:15px;color:#52525b;line-height:1.55;max-width:440px}
-.loc{display:flex;align-items:center;gap:7px;font-size:13px;color:#71717a}
-.icons{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.icon{border:1px solid #e4e4e7;border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:#3f3f46}
-.icon:hover{background:#f4f4f5;border-color:#d4d4d8;color:#18181b}
-.avatar{flex-shrink:0;width:100px;height:100px;border-radius:14px;border:1px solid #e4e4e7;display:flex;align-items:center;justify-content:center;font-family:ui-sans-serif,system-ui,sans-serif;font-size:30px;font-weight:600;color:#a1a1aa;background:#f4f4f5}
-section{display:flex;flex-direction:column;margin-top:44px}
-h2{margin:0 0 14px;font-weight:700;font-size:22px;color:#09090b}
-.body{margin:0;font-size:14px;line-height:1.7;color:#52525b;max-width:620px}
-.entry{display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
-.entry:last-child{margin-bottom:0}
-.row{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
-.org{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.name{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:17px;color:#09090b}
-.pill{font-size:11px;color:#3f3f46;background:#f4f4f5;border-radius:5px;padding:2px 8px}
-.date{font-size:13px;color:#71717a;white-space:nowrap}
-.role{font-size:14px;color:#18181b}
-.desc{margin:4px 0 0;font-size:14px;line-height:1.65;color:#52525b;max-width:600px}
-.link{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:16px;color:#09090b;border-bottom:1px solid transparent;align-self:flex-start}
-.proj{display:flex;flex-direction:column;gap:5px;margin-bottom:18px}
-.proj:last-child{margin-bottom:0}
-.edu{display:flex;flex-direction:column;gap:3px;margin-bottom:18px}
-.edu:last-child{margin-bottom:0}
-.edu .name{font-size:16px}
-.edu .sub{font-size:14px;color:#52525b}
-.grant{display:flex;gap:10px;font-size:14px;line-height:1.55;color:#52525b;max-width:600px}
-.dash{color:#a1a1aa;flex-shrink:0}
-.ach-group{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
-.ach-group:last-child{margin-bottom:0}
-.ach-label{font-size:12px;color:#71717a}
-.ach-items{display:flex;flex-direction:column;gap:8px}
-.ach-item{display:flex;gap:10px;font-size:14px;line-height:1.55;color:#3f3f46;max-width:600px}
-.travel{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
-.travel .link{font-size:16px}
-.travels{display:flex;flex-direction:column;gap:10px}
-/* carousel */
-.car{display:flex;align-items:center;gap:12px}
-.arrow{flex-shrink:0;width:34px;height:34px;border:1px solid #e4e4e7;border-radius:8px;background:#fff;color:#3f3f46;display:flex;align-items:center;justify-content:center;cursor:pointer}
-.arrow:hover{border-color:#a1a1aa}
-.viewport{flex-grow:1;overflow:hidden}
+/* Design tokens mirror cv.jarocki.me (shadcn "gray" theme + Tailwind defaults) */
+:root{
+  color-scheme:light;
+  --fg:#030712;                 /* foreground */
+  --fg-80:rgba(3,7,18,.8);      /* foreground/80 */
+  --muted:#f3f4f6;              /* muted / secondary / accent */
+  --muted-fg:#6b7280;           /* muted-foreground, gray-500 */
+  --secondary-fg:#111827;
+  --border:#e5e7eb;
+  --primary-80:rgba(17,24,39,.8);
+  --sans:'Geist',system-ui,sans-serif;
+  --mono:'Geist Mono',ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;border:0 solid var(--border)}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,p,ul{margin:0;padding:0}
+ul{list-style:none}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;cursor:pointer;padding:0}
+.u:hover{text-decoration:underline}
+.mono{font-family:var(--mono)}
+
+main{padding:16px}
+@media (min-width:768px){main{padding:64px}}
+.resume{max-width:672px;margin:0 auto;display:flex;flex-direction:column;gap:32px}
+
+/* header */
+header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.h-left{flex:1;display:flex;flex-direction:column;gap:6px}
+h1{font-size:30px;line-height:36px;font-weight:700;letter-spacing:-.025em}
+.about{max-width:448px;font-family:var(--mono);font-size:14px;line-height:20px;color:var(--fg-80);text-wrap:pretty}
+.loc{font-family:var(--mono);font-size:12px;line-height:16px}
+.loc a{display:inline-flex;gap:6px;line-height:1;align-items:center}
+.icons{display:flex;gap:4px;padding-top:4px}
+.icon{width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:6px;background:#fff;transition:background-color .15s}
+.icon:hover{background:var(--muted)}
+.icon svg{width:16px;height:16px}
+.avatar{flex-shrink:0;width:112px;height:112px;border-radius:12px;background:var(--muted);box-shadow:0 0 0 1px var(--muted);display:flex;align-items:center;justify-content:center;font-size:18px;line-height:28px;font-weight:600;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+
+/* sections */
+section{display:flex;flex-direction:column;gap:12px}
+h2{font-size:20px;line-height:28px;font-weight:700}
+.text{font-family:var(--mono);font-size:14px;line-height:20px;color:var(--fg-80);text-wrap:pretty}
+.list{display:flex;flex-direction:column;gap:16px}
+
+/* work / education / generic items */
+.item{display:flex;flex-direction:column}
+.item.work{padding:4px 0}
+.item-head{display:flex;flex-direction:column;gap:6px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:16px}
+h3{display:inline-flex;align-items:center;gap:4px;font-size:16px;font-weight:600;line-height:1}
+h4{font-family:var(--mono);font-size:14px;font-weight:600;line-height:1}
+.date{font-size:14px;line-height:20px;color:var(--muted-fg);font-variant-numeric:tabular-nums;white-space:nowrap}
+.item-body{margin-top:8px;font-family:var(--mono);font-size:12px;line-height:16px;color:var(--fg-80);text-wrap:pretty}
+.item-body.lg{font-size:14px;line-height:20px}
+.item-body ul{list-style:disc inside}
+.item-body b{font-weight:600;color:var(--fg)}
+
+/* badges */
+.badge{display:inline-flex;align-items:center;white-space:nowrap;border-radius:6px;padding:2px 8px;font-family:var(--mono);font-size:12px;line-height:16px;font-weight:600;transition:background-color .15s}
+.badge.secondary{background:var(--muted);color:var(--secondary-fg)}
+.badge.secondary:hover{background:rgba(243,244,246,.6)}
+.badge.tiny{padding:0 4px;font-size:10px}
+.badges{display:inline-flex;flex-wrap:wrap;gap:4px}
+
+/* project + book cards */
+.grid{display:grid;grid-template-columns:1fr;gap:12px;margin:0 -12px}
+@media (min-width:768px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.grid.three{grid-template-columns:repeat(3,1fr)}}
+.card{height:100%;display:flex;flex-direction:column;border:1px solid var(--muted);border-radius:8px;padding:12px;background:#fff;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
+.card-title{font-size:16px;font-weight:600;line-height:1;letter-spacing:-.025em}
+.card-title a{display:inline-flex;align-items:center;gap:4px}
+.dot-live{width:4px;height:4px;border-radius:9999px;background:#22c55e}
+.card-desc{margin-top:4px;font-family:var(--mono);font-size:12px;line-height:16px;text-wrap:pretty}
+.card-foot{margin-top:auto;padding-top:8px}
+
+/* reading carousel */
+.car{display:flex;align-items:center;gap:8px}
+.viewport{flex:1;overflow:hidden}
 .track{display:flex;transition:transform .35s ease}
-.cell{flex:0 0 8.3333%;box-sizing:border-box}
-.book{height:132px;margin:0 6px;border:1px solid #e4e4e7;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;box-sizing:border-box}
-.b-month{font-size:12px;color:#71717a}
-.b-title{font-family:ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:15px;line-height:1.35;color:#09090b}
-.b-author{font-size:12px;color:#71717a}
-.dots{display:flex;justify-content:center;gap:7px;margin-top:16px}
-.dot{width:7px;height:7px;border-radius:50%;border:none;padding:0;cursor:pointer;background:#d4d4d8}
-.dot.on{background:#09090b}
-@media (max-width:560px){.cell{flex-basis:16.6666%}.car .viewport .track{width:600%}}
+.cell{flex:0 0 33.3333%;padding:0 4px}
+.book{height:112px}
+.book .card-desc{color:var(--muted-fg);margin:0 0 6px}
+.book .by{margin-top:6px;font-family:var(--mono);font-size:12px;line-height:16px;color:var(--fg-80)}
+.pager{display:flex;justify-content:center;gap:6px;margin-top:4px}
+.pager button{width:6px;height:6px;border-radius:9999px;background:var(--border)}
+.pager button.on{background:var(--fg)}
+
+/* command menu (⌘J) */
+.hint{position:fixed;left:0;right:0;bottom:0;display:none;padding:24px 4px 4px;text-align:center;font-size:14px;line-height:20px;color:var(--muted-fg);background:linear-gradient(to top,#fff,transparent)}
+@media (min-width:1280px){.hint{display:block}}
+kbd{display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 6px;border:1px solid var(--border);border-radius:4px;background:var(--muted);font-family:var(--mono);font-size:10px;font-weight:500;color:var(--muted-fg);pointer-events:none;user-select:none}
+kbd span{font-size:12px}
+.fab{position:fixed;right:16px;bottom:16px;width:40px;height:40px;border-radius:9999px;box-shadow:0 25px 50px -12px rgba(0,0,0,.25)}
+.fab svg{width:24px;height:24px}
+@media (min-width:1280px){.fab{display:none}}
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.8);display:none}
+.overlay.open{display:block}
+.dialog{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:calc(100% - 32px);max-width:512px;background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);overflow:hidden}
+.cmd-input{display:flex;align-items:center;border-bottom:1px solid var(--border);padding:0 12px}
+.cmd-input svg{width:16px;height:16px;margin-right:8px;opacity:.5;flex-shrink:0}
+.cmd-input input{flex:1;height:48px;border:0;outline:0;background:transparent;font:inherit;font-size:14px}
+.cmd-list{max-height:300px;overflow-y:auto;padding:4px 8px 8px}
+.cmd-group{padding-top:4px}
+.cmd-heading{padding:6px 8px;font-size:12px;font-weight:500;color:var(--muted-fg)}
+.cmd-item{display:block;width:100%;text-align:left;padding:12px 8px;border-radius:2px;font-size:14px}
+.cmd-item.sel{background:var(--muted)}
+.cmd-empty{padding:24px 0;text-align:center;font-size:14px;display:none}
+
+/* entrance animation */
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.fade{animation:fadeIn .4s ease-out both}
+
+@media print{
+  @page{margin:0}
+  main{padding:44px}
+  .resume{gap:16px}
+  section{gap:4px}
+  .no-print,.hint,.fab,.overlay{display:none !important}
+  .fade{animation:none !important}
+  .about,.text,.item-body.lg{font-size:12px}
+  .item-body{font-size:10px}
+  .item,.card{break-inside:avoid}
+  .grid{grid-template-columns:repeat(3,1fr);gap:8px}
+  .car .arrow,.pager{display:none}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="col">
+<main>
+  <div class="resume">
 
-    <div class="header">
-      <div class="h-left">
-        <h1>James Rivera</h1>
-        <p class="tagline">CS Master's student at Georgia Tech focused in blockchain and cryptography, American Karate black belt, advanced Mandarin Chinese speaker</p>
-        <div class="loc">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20"/></svg>
-          <span>Atlanta, GA, EST</span>
+    <div class="fade" style="animation-delay:0ms">
+      <header>
+        <div class="h-left">
+          <h1>James Rivera</h1>
+          <p class="about">CS Master's student at Georgia Tech focused in blockchain and cryptography, American Karate black belt, advanced Mandarin Chinese speaker</p>
+          <p class="loc">
+            <a class="u" href="https://www.google.com/maps/place/Atlanta,+GA" target="_blank" rel="noopener noreferrer">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              Atlanta, GA, EST
+            </a>
+          </p>
+          <ul class="icons no-print">
+            <li><a class="icon" href="mailto:james@example.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a></li>
+            <li><a class="icon" href="https://github.com/jameslrivera" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.13-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.88.12 3.18.77.84 1.23 1.92 1.23 3.23 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.56 22.29 24 17.8 24 12.5 24 5.87 18.63.5 12 .5Z"/></svg></a></li>
+            <li><a class="icon" href="https://www.linkedin.com/in/james-rivera-607872212/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0Z"/></svg></a></li>
+          </ul>
         </div>
-        <div class="icons">
-          <a class="icon" href="mailto:james@example.com" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg></a>
-          <a class="icon" href="https://github.com/jameslrivera" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.13-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.88.12 3.18.77.84 1.23 1.92 1.23 3.23 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.56 22.29 24 17.8 24 12.5 24 5.87 18.63.5 12 .5Z"/></svg></a>
-          <a class="icon" href="https://www.linkedin.com/in/james-rivera-607872212/" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0Z"/></svg></a>
-        </div>
-      </div>
-      <div class="avatar">JR</div>
+        <!-- swap for: <div class="avatar"><img src="images/headshot.jpg" alt="James Rivera"></div> -->
+        <div class="avatar">JR</div>
+      </header>
     </div>
 
-    <section>
-      <h2>Interests</h2>
-      <p class="body">Enjoy learning about East Asian culture and language. Currently researching in the foundational mathematics behind verifiable computation and zero-knowledge proofs. Curious about post-quantum cryptography and decentralized P2P networks. Active CTF competitor, competing in over a dozen competitions, specializing in smart contract exploitation and cryptography.</p>
-    </section>
+    <div class="fade" style="animation-delay:75ms">
+      <section>
+        <h2>Interests</h2>
+        <p class="text">Enjoy learning about East Asian culture and language. Currently researching in the foundational mathematics behind verifiable computation and zero-knowledge proofs. Curious about post-quantum cryptography and decentralized P2P networks. Active CTF competitor, competing in over a dozen competitions, specializing in smart contract exploitation and cryptography.</p>
+      </section>
+    </div>
 
-    <section>
-      <h2>Work Experience</h2>
-      <div class="entry">
-        <div class="row">
-          <div class="org"><a class="name" href="https://3vi.us">3Vi, Inc.</a><span class="pill">Remote</span></div>
-          <span class="date">Dec 2025 - Aug 2026</span>
+    <div class="fade" style="animation-delay:150ms">
+      <section>
+        <h2>Work Experience</h2>
+        <div class="list">
+          <article class="item work">
+            <div class="item-head">
+              <div class="row">
+                <h3><a class="u" href="https://3vi.us" target="_blank" rel="noopener noreferrer">3Vi, Inc.</a><span class="badges"><span class="badge secondary">Remote</span></span></h3>
+                <div class="date">Dec 2025 - Aug 2026</div>
+              </div>
+              <h4>Software Engineer I / Cybersecurity Specialist I</h4>
+            </div>
+            <div class="item-body">Supported the development of cloud solutions and network topologies for critical infrastructure projects.</div>
+          </article>
+          <article class="item work">
+            <div class="item-head">
+              <div class="row">
+                <h3><a class="u" href="https://3vi.us" target="_blank" rel="noopener noreferrer">3Vi, Inc.</a><span class="badges"><span class="badge secondary">Remote</span></span></h3>
+                <div class="date">Jun 2024 - Sep 2024</div>
+              </div>
+              <h4>Software Engineering Intern</h4>
+            </div>
+            <div class="item-body">Led development of internal applications to improve efficiency among the engineering teams.</div>
+          </article>
         </div>
-        <div class="role">Software Engineer I / Cybersecurity Specialist I</div>
-        <p class="desc">Supported the development of cloud solutions and network topologies for critical infrastructure projects.</p>
-      </div>
-      <div class="entry">
-        <div class="row">
-          <div class="org"><a class="name" href="https://3vi.us">3Vi, Inc.</a><span class="pill">Remote</span></div>
-          <span class="date">Jun 2024 - Sep 2024</span>
+      </section>
+    </div>
+
+    <div class="fade" style="animation-delay:225ms">
+      <section>
+        <h2>Projects</h2>
+        <div class="grid three">
+          <article class="card">
+            <h3 class="card-title"><a class="u" href="https://github.com/jameslrivera/CICD-Pipeline-Lab" target="_blank" rel="noopener noreferrer">CI/CD Pipeline Lab<span class="dot-live" aria-hidden="true"></span></a></h3>
+            <p class="card-desc">Personal DevOps pipeline project built using Docker, Kubernetes, Terraform, Helm, GitLab CI, and GitHub Actions.</p>
+            <div class="card-foot"><ul class="badges"><li class="badge secondary tiny">Docker</li><li class="badge secondary tiny">Kubernetes</li><li class="badge secondary tiny">Terraform</li><li class="badge secondary tiny">Helm</li><li class="badge secondary tiny">GitLab CI</li><li class="badge secondary tiny">GitHub Actions</li></ul></div>
+          </article>
+          <article class="card">
+            <h3 class="card-title"><a class="u" href="https://github.com/jameslrivera/personal-soc-lab" target="_blank" rel="noopener noreferrer">Personal SOC Lab<span class="dot-live" aria-hidden="true"></span></a></h3>
+            <p class="card-desc">Virtual SOC lab using the Elastic Stack, Docker, and Elastic EDR to monitor and attack Kali and Windows VMs.</p>
+            <div class="card-foot"><ul class="badges"><li class="badge secondary tiny">Elastic Stack</li><li class="badge secondary tiny">Docker</li><li class="badge secondary tiny">Elastic EDR</li><li class="badge secondary tiny">Kali Linux</li></ul></div>
+          </article>
         </div>
-        <div class="role">Software Engineering Intern</div>
-        <p class="desc">Led development of internal applications to improve efficiency among the engineering teams.</p>
-      </div>
-    </section>
+      </section>
+    </div>
 
-    <section>
-      <h2>Projects</h2>
-      <div class="proj">
-        <a class="link" href="https://github.com/jameslrivera/CICD-Pipeline-Lab">CI/CD Pipeline Lab</a>
-        <p class="desc">Personal DevOps pipeline project built using Docker, Kubernetes, Terraform, Helm, GitLab CI, and GitHub Actions.</p>
-      </div>
-      <div class="proj">
-        <a class="link" href="https://github.com/jameslrivera/personal-soc-lab">Personal SOC Lab</a>
-        <p class="desc">Virtual SOC lab using the Elastic Stack, Docker, and Elastic EDR to monitor and attack Kali and Windows VMs.</p>
-      </div>
-    </section>
-
-    <section>
-      <h2>Education</h2>
-      <div class="edu">
-        <div class="row"><span class="name">Georgia Institute of Technology</span><span class="date">expected 2028</span></div>
-        <div class="sub">M.S. Computer Science</div>
-      </div>
-      <div class="edu">
-        <div class="row"><span class="name">College of Coastal Georgia</span><span class="date">in progress</span></div>
-        <div class="sub">B.S. Mathematics — researcher under Dr. Yeager focused on zero-knowledge proofs</div>
-      </div>
-      <div class="edu">
-        <div class="row"><span class="name">University of Georgia</span><span class="date">Summer 2025</span></div>
-        <div class="sub">B.S. Computer Science, minor in Chinese Language and Literature</div>
-      </div>
-      <div class="edu">
-        <div class="row"><span class="name">National Taiwan University</span><span class="date">Jan 2025 - Jun 2025</span></div>
-        <div class="sub">Computer Science and Chinese Language exchange program</div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Organizations</h2>
-      <div><a class="link" href="https://thehackpack.org">University of Georgia Competitive Hacking Team</a></div>
-    </section>
-
-    <section>
-      <h2>Achievements</h2>
-      <div class="ach-group">
-        <div class="ach-label">Competitions</div>
-        <div class="ach-items">
-          <div class="ach-item"><span class="dash">—</span><span><span style="font-weight:700;color:#09090b">National Cyber League Spring 2026 Individual Game</span>, 79th in nation</span></div>
-          <div class="ach-item"><span class="dash">—</span><span><span style="font-weight:700;color:#09090b">Georgia Tech TkCTF 2024</span>, 6th — UGA's A Team</span></div>
-          <div class="ach-item"><span class="dash">—</span><span><span style="font-weight:700;color:#09090b">NSA Codebreaker Challenge 2024–2025</span>, UGA 16th in nation</span></div>
-          <div class="ach-item"><span class="dash">—</span><span><span style="font-weight:700;color:#09090b">NCAE Cyber Games 2025</span>, 2nd in SEC — UGA's Blue Team</span></div>
+    <div class="fade" style="animation-delay:300ms">
+      <section>
+        <h2>Education</h2>
+        <div class="list">
+          <article class="item">
+            <div class="row"><h3>Georgia Institute of Technology</h3><div class="date">expected 2028</div></div>
+            <div class="item-body lg">M.S. Computer Science</div>
+          </article>
+          <article class="item">
+            <div class="row"><h3>College of Coastal Georgia</h3><div class="date">in progress</div></div>
+            <div class="item-body lg">B.S. Mathematics — researcher under Dr. Yeager focused on zero-knowledge proofs</div>
+          </article>
+          <article class="item">
+            <div class="row"><h3>University of Georgia</h3><div class="date">Summer 2025</div></div>
+            <div class="item-body lg">B.S. Computer Science, minor in Chinese Language and Literature</div>
+          </article>
+          <article class="item">
+            <div class="row"><h3>National Taiwan University</h3><div class="date">Jan 2025 - Jun 2025</div></div>
+            <div class="item-body lg">Computer Science and Chinese Language exchange program</div>
+          </article>
         </div>
-      </div>
-      <div class="ach-group">
-        <div class="ach-label">Certifications</div>
-        <div class="ach-items">
-          <div class="ach-item"><span class="dash">—</span><span>CompTIA Security+</span></div>
-        </div>
-      </div>
-      <div class="ach-group">
-        <div class="ach-label">Martial Arts</div>
-        <div class="ach-items">
-          <div class="ach-item"><span class="dash">—</span><span>Black Belt, American Karate — Newbern's Self Defense School</span></div>
-          <div class="ach-item"><span class="dash">—</span><span>Blue Belt, Brazilian Jiu-Jitsu — Divine Jiu Jitsu</span></div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
-    <section>
-      <h2>Reading</h2>
-      <div class="car">
-        <button class="arrow" id="prev" aria-label="Previous months"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
-        <div class="viewport"><div class="track" id="track"></div></div>
-        <button class="arrow" id="next" aria-label="Next months"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
-      </div>
-      <div class="dots" id="dots"></div>
-    </section>
+    <div class="fade" style="animation-delay:375ms">
+      <section>
+        <h2>Organizations</h2>
+        <div class="list">
+          <article class="item">
+            <h3><a class="u" href="https://thehackpack.org" target="_blank" rel="noopener noreferrer">University of Georgia Competitive Hacking Team</a></h3>
+          </article>
+        </div>
+      </section>
+    </div>
 
-    <section>
-      <h2>Travels</h2>
-      <div class="travels">
-        <div class="travel"><a class="link" href="japan.html">Japan</a><span class="date">Jun - Jul 2025</span></div>
-        <div class="travel"><a class="link" href="taiwan.html">Taiwan</a><span class="date">Jan - Jun 2025</span></div>
-        <div class="travel"><a class="link" href="thailand.html">Thailand</a><span class="date">May 2025</span></div>
-        <div class="travel"><a class="link" href="hongkong.html">Hong Kong</a><span class="date">Jun 2025</span></div>
-      </div>
-    </section>
+    <div class="fade" style="animation-delay:450ms">
+      <section>
+        <h2>Achievements</h2>
+        <div class="list">
+          <article class="item">
+            <h3>Competitions</h3>
+            <div class="item-body"><ul>
+              <li><b>National Cyber League Spring 2026 Individual Game</b>, 79th in nation</li>
+              <li><b>Georgia Tech TkCTF 2024</b>, 6th — UGA's A Team</li>
+              <li><b>NSA Codebreaker Challenge 2024–2025</b>, UGA 16th in nation</li>
+              <li><b>NCAE Cyber Games 2025</b>, 2nd in SEC — UGA's Blue Team</li>
+            </ul></div>
+          </article>
+          <article class="item">
+            <h3>Certifications</h3>
+            <div class="item-body"><ul><li>CompTIA Security+</li></ul></div>
+          </article>
+          <article class="item">
+            <h3>Martial Arts</h3>
+            <div class="item-body"><ul>
+              <li>Black Belt, American Karate — Newbern's Self Defense School</li>
+              <li>Blue Belt, Brazilian Jiu-Jitsu — Divine Jiu Jitsu</li>
+            </ul></div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <div class="fade" style="animation-delay:525ms">
+      <section>
+        <h2>Reading</h2>
+        <div class="car">
+          <button class="icon arrow" id="prev" aria-label="Previous months"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+          <div class="viewport"><div class="track" id="track"></div></div>
+          <button class="icon arrow" id="next" aria-label="Next months"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+        </div>
+        <div class="pager" id="dots"></div>
+      </section>
+    </div>
+
+    <div class="fade" style="animation-delay:600ms">
+      <section>
+        <h2>Travels</h2>
+        <div class="list">
+          <article class="item"><div class="row"><h3><a class="u" href="japan.html">Japan</a></h3><div class="date">Jun - Jul 2025</div></div></article>
+          <article class="item"><div class="row"><h3><a class="u" href="taiwan.html">Taiwan</a></h3><div class="date">Jan - Jun 2025</div></div></article>
+          <article class="item"><div class="row"><h3><a class="u" href="thailand.html">Thailand</a></h3><div class="date">May 2025</div></div></article>
+          <article class="item"><div class="row"><h3><a class="u" href="hongkong.html">Hong Kong</a></h3><div class="date">Jun 2025</div></div></article>
+        </div>
+      </section>
+    </div>
 
   </div>
-</div>
+
+  <p class="hint">Press <kbd><span id="modkey">⌘</span>J</kbd> to open the command menu</p>
+  <button class="icon fab" id="fab" aria-label="Open command menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"/></svg></button>
+  <div class="overlay" id="overlay">
+    <div class="dialog" role="dialog" aria-label="Command menu">
+      <div class="cmd-input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="cmdq" placeholder="Type a command or search..." autocomplete="off"></div>
+      <div class="cmd-list" id="cmdlist"></div>
+      <div class="cmd-empty" id="cmdempty">No results found.</div>
+    </div>
+  </div>
+</main>
 
 <script>
+// Reading carousel
 (function(){
   var books=[
     {month:'January',title:'Unbeatable Mind',author:'Mark Divine'},
@@ -216,25 +336,76 @@ h2{margin:0 0 14px;font-weight:700;font-size:22px;color:#09090b}
     {month:'November',title:'',author:''},
     {month:'December',title:'',author:''}
   ];
-  var perPage=3, pages=Math.ceil(books.length/perPage), page=0;
-  var track=document.getElementById('track');
-  var dotsEl=document.getElementById('dots');
+  var track=document.getElementById('track'), dotsEl=document.getElementById('dots');
+  var mq=window.matchMedia('(max-width:560px)'), perPage, pages, page=0;
   function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
-  track.style.width=(pages*100)+'%';
   books.forEach(function(b){
     var cell=document.createElement('div');cell.className='cell';
-    cell.style.flexBasis=(100/books.length)+'%';
-    cell.innerHTML='<div class="book"><div class="b-month">'+esc(b.month)+'</div><div class="b-title">'+esc(b.title)+'</div>'+(b.author?'<div class="b-author">'+esc(b.author)+'</div>':'')+'</div>';
+    cell.innerHTML='<div class="card book"><p class="card-desc">'+esc(b.month)+'</p><h3 class="card-title">'+esc(b.title||'—')+'</h3>'+(b.author?'<p class="by">'+esc(b.author)+'</p>':'')+'</div>';
     track.appendChild(cell);
   });
-  for(var i=0;i<pages;i++){(function(idx){var d=document.createElement('button');d.className='dot';d.setAttribute('aria-label','Go to page '+(idx+1));d.onclick=function(){page=idx;render();};dotsEl.appendChild(d);})(i);}
+  function layout(){
+    perPage=mq.matches?1:3; pages=Math.ceil(books.length/perPage);
+    [].forEach.call(track.children,function(c){c.style.flexBasis=(100/perPage)+'%';});
+    dotsEl.innerHTML='';
+    for(var i=0;i<pages;i++){(function(idx){var d=document.createElement('button');d.setAttribute('aria-label','Go to page '+(idx+1));d.onclick=function(){page=idx;render();};dotsEl.appendChild(d);})(i);}
+    page=Math.min(page,pages-1); render();
+  }
   function render(){
-    track.style.transform='translateX(-'+(page*(100/pages))+'%)';
-    var ds=dotsEl.children;for(var j=0;j<ds.length;j++){ds[j].className='dot'+(j===page?' on':'');}
+    track.style.transform='translateX(-'+(page*100)+'%)';
+    [].forEach.call(dotsEl.children,function(d,j){d.className=j===page?'on':'';});
   }
   document.getElementById('prev').onclick=function(){page=(page-1+pages)%pages;render();};
   document.getElementById('next').onclick=function(){page=(page+1)%pages;render();};
-  render();
+  (mq.addEventListener?mq.addEventListener('change',layout):mq.addListener(layout));
+  layout();
+})();
+
+// Command menu (⌘J / Ctrl+J), same as cv.jarocki.me
+(function(){
+  var groups=[
+    {heading:'Actions',items:[{title:'Print',run:function(){window.print();}}]},
+    {heading:'Links',items:[
+      {title:'Email',url:'mailto:james@example.com'},
+      {title:'GitHub',url:'https://github.com/jameslrivera'},
+      {title:'LinkedIn',url:'https://www.linkedin.com/in/james-rivera-607872212/'}
+    ]}
+  ];
+  var overlay=document.getElementById('overlay'), q=document.getElementById('cmdq'),
+      list=document.getElementById('cmdlist'), empty=document.getElementById('cmdempty'), sel=0, visible=[];
+  if(!/Mac/.test(navigator.userAgent)) document.getElementById('modkey').textContent='Ctrl+';
+  function run(it){close(); if(it.run) setTimeout(it.run,50); else window.open(it.url,'_blank');}
+  function draw(){
+    var term=q.value.trim().toLowerCase(); list.innerHTML=''; visible=[];
+    groups.forEach(function(g){
+      var items=g.items.filter(function(it){return it.title.toLowerCase().indexOf(term)>-1;});
+      if(!items.length) return;
+      var gEl=document.createElement('div');gEl.className='cmd-group';
+      gEl.innerHTML='<div class="cmd-heading">'+g.heading+'</div>';
+      items.forEach(function(it){
+        var idx=visible.length; visible.push(it);
+        var b=document.createElement('button');b.className='cmd-item'+(idx===sel?' sel':'');b.textContent=it.title;
+        b.onmouseenter=function(){sel=idx;draw();};b.onclick=function(){run(it);};
+        gEl.appendChild(b);
+      });
+      list.appendChild(gEl);
+    });
+    empty.style.display=visible.length?'none':'block';
+  }
+  function open(){overlay.classList.add('open');q.value='';sel=0;draw();q.focus();}
+  function close(){overlay.classList.remove('open');}
+  function toggle(){overlay.classList.contains('open')?close():open();}
+  document.getElementById('fab').onclick=toggle;
+  overlay.onclick=function(e){if(e.target===overlay)close();};
+  q.oninput=function(){sel=0;draw();};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='j'&&(e.metaKey||e.ctrlKey)){e.preventDefault();toggle();return;}
+    if(!overlay.classList.contains('open')) return;
+    if(e.key==='Escape') close();
+    else if(e.key==='ArrowDown'){e.preventDefault();sel=Math.min(sel+1,visible.length-1);draw();}
+    else if(e.key==='ArrowUp'){e.preventDefault();sel=Math.max(sel-1,0);draw();}
+    else if(e.key==='Enter'&&visible[sel]) run(visible[sel]);
+  });
 })();
 </script>
 </body>
