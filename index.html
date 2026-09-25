@@ -75,6 +75,8 @@ h4{font-family:var(--mono);font-size:14px;font-weight:600;line-height:1}
 .badge.secondary:hover{background:rgba(243,244,246,.6)}
 .badge.tiny{padding:0 4px;font-size:10px}
 .badges{display:inline-flex;flex-wrap:wrap;gap:4px}
+.m-badges{display:none;margin-top:8px}
+@media (max-width:639px){h3 .badges{display:none}.m-badges{display:flex}.row h3{line-height:1.25}}
 
 /* project + book cards */
 .grid{display:grid;grid-template-columns:1fr;gap:12px;margin:0 -12px}
@@ -148,7 +150,7 @@ kbd span{font-size:12px}
       <header>
         <div class="h-left">
           <h1>James Rivera</h1>
-          <p class="about">CS Master's student at Georgia Tech focused in blockchain and cryptography, American Karate black belt, advanced Mandarin Chinese speaker</p>
+          <p class="about">CS Master's student at Georgia Tech focused in blockchain and cryptography, lifelong martial artist, advanced Mandarin Chinese speaker</p>
           <p class="loc">
             <a class="u" href="https://www.google.com/maps/place/Atlanta,+GA" target="_blank" rel="noopener noreferrer">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
@@ -169,7 +171,7 @@ kbd span{font-size:12px}
     <div class="fade" style="animation-delay:75ms">
       <section>
         <h2>Interests</h2>
-        <p class="text">Enjoy learning about East Asian culture and language. Currently researching in the foundational mathematics behind verifiable computation and zero-knowledge proofs. Curious about post-quantum cryptography and decentralized P2P networks. Active CTF competitor, competing in over a dozen competitions, specializing in smart contract exploitation and cryptography.</p>
+        <p class="text">Enjoy learning about East Asian culture and language. Curious about zero-knowledge proofs and decentralized P2P networks. Active CTF competitor, competing in over a dozen competitions, specializing in smart contract exploitation and cryptography.</p>
       </section>
     </div>
 
@@ -186,6 +188,7 @@ kbd span{font-size:12px}
               <h4>Software Engineer I / Cybersecurity Specialist I</h4>
             </div>
             <div class="item-body">Supported the development of cloud solutions and network topologies for critical infrastructure projects.</div>
+            <div class="badges m-badges"><span class="badge secondary">Remote</span></div>
           </article>
           <article class="item work">
             <div class="item-head">
@@ -196,6 +199,7 @@ kbd span{font-size:12px}
               <h4>Software Engineering Intern</h4>
             </div>
             <div class="item-body">Led development of internal applications to improve efficiency among the engineering teams.</div>
+            <div class="badges m-badges"><span class="badge secondary">Remote</span></div>
           </article>
         </div>
       </section>
@@ -229,7 +233,7 @@ kbd span{font-size:12px}
           </article>
           <article class="item">
             <div class="row"><h3>College of Coastal Georgia</h3><div class="date">in progress</div></div>
-            <div class="item-body lg">B.S. Mathematics — researcher under Dr. Yeager focused on zero-knowledge proofs</div>
+            <div class="item-body lg">B.S. Mathematics</div>
           </article>
           <article class="item">
             <div class="row"><h3>University of Georgia</h3><div class="date">Summer 2025</div></div>
@@ -245,6 +249,25 @@ kbd span{font-size:12px}
 
     <div class="fade" style="animation-delay:375ms">
       <section>
+        <h2>Research</h2>
+        <div class="list">
+          <article class="item work">
+            <div class="item-head">
+              <div class="row">
+                <h3>Primality Testing &amp; Carmichael Numbers<span class="badges"><span class="badge secondary">Undergraduate Research</span></span></h3>
+                <div class="date">Fall 2026</div>
+              </div>
+              <h4>Advisor: Dr. Yeager, College of Coastal Georgia</h4>
+            </div>
+            <div class="item-body">Researching programmable primality test algorithms and the distribution of Carmichael numbers as they relate to RSA and other public-key encryption schemes.</div>
+            <div class="badges m-badges"><span class="badge secondary">Undergraduate Research</span></div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <div class="fade" style="animation-delay:450ms">
+      <section>
         <h2>Organizations</h2>
         <div class="list">
           <article class="item">
@@ -254,7 +277,7 @@ kbd span{font-size:12px}
       </section>
     </div>
 
-    <div class="fade" style="animation-delay:450ms">
+    <div class="fade" style="animation-delay:525ms">
       <section>
         <h2>Achievements</h2>
         <div class="list">
@@ -276,13 +299,14 @@ kbd span{font-size:12px}
             <div class="item-body"><ul>
               <li>Black Belt, American Karate — Newbern's Self Defense School</li>
               <li>Blue Belt, Brazilian Jiu-Jitsu — Divine Jiu Jitsu</li>
+              <li>3 Years Training, Boxing — Brunswick Boxing School</li>
             </ul></div>
           </article>
         </div>
       </section>
     </div>
 
-    <div class="fade" style="animation-delay:525ms">
+    <div class="fade" style="animation-delay:600ms">
       <section>
         <h2>Reading</h2>
         <div class="car">
@@ -294,7 +318,7 @@ kbd span{font-size:12px}
       </section>
     </div>
 
-    <div class="fade" style="animation-delay:600ms">
+    <div class="fade" style="animation-delay:675ms">
       <section>
         <h2>Travels</h2>
         <div class="list">
