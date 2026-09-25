@@ -90,17 +90,15 @@ h4{font-family:var(--mono);font-size:14px;font-weight:600;line-height:1}
 .card-desc{margin-top:4px;font-family:var(--mono);font-size:12px;line-height:16px;text-wrap:pretty}
 .card-foot{margin-top:auto;padding-top:8px}
 
-/* reading carousel */
-.car{display:flex;align-items:center;gap:8px}
-.viewport{flex:1;overflow:hidden}
-.track{display:flex;transition:transform .35s ease}
-.cell{flex:0 0 33.3333%;padding:0 4px}
-.book{height:112px}
-.book .card-desc{color:var(--muted-fg);margin:0 0 6px}
-.book .by{margin-top:6px;font-family:var(--mono);font-size:12px;line-height:16px;color:var(--fg-80)}
-.pager{display:flex;justify-content:center;gap:6px;margin-top:4px}
-.pager button{width:6px;height:6px;border-radius:9999px;background:var(--border)}
-.pager button.on{background:var(--fg)}
+/* reading list */
+.reading{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:640px){.reading{grid-template-columns:repeat(2,1fr)}}
+.reading-col{display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:12px;line-height:16px}
+.reading-col li{display:block;text-wrap:pretty}
+.month::after{content:", "}
+.month{color:var(--muted-fg)}
+.book-title{font-weight:600;color:var(--fg);text-wrap:pretty}
+.tbd{color:var(--border)}
 
 /* command menu (⌘J) */
 .hint{position:fixed;left:0;right:0;bottom:0;display:none;padding:24px 4px 4px;text-align:center;font-size:14px;line-height:20px;color:var(--muted-fg);background:linear-gradient(to top,#fff,transparent)}
@@ -138,7 +136,7 @@ kbd span{font-size:12px}
   .item-body{font-size:10px}
   .item,.card{break-inside:avoid}
   .grid{grid-template-columns:repeat(3,1fr);gap:8px}
-  .car .arrow,.pager{display:none}
+  .reading{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
@@ -187,7 +185,14 @@ kbd span{font-size:12px}
               </div>
               <h4>Software Engineer I / Cybersecurity Specialist I</h4>
             </div>
-            <div class="item-body">Supported the development of cloud solutions and network topologies for critical infrastructure projects.</div>
+            <div class="item-body">Supported critical infrastructure projects securing network communication and developing cloud solutions.
+              <ul>
+                <li>Collaborated with COO to update the company cybersecurity policy manual, applying NIST SP 800-53 standards.</li>
+                <li>Managed company IT ticketing system resolving employee hardware and firmware issues remotely.</li>
+                <li>Administered Microsoft Intune for device provisioning and endpoint device management as well as Entra ID accounts and security groups for employees.</li>
+                <li>Engaged in client meetings, delivered joint technical presentations to engineering and non-technical audiences.</li>
+              </ul>
+            </div>
             <div class="badges m-badges"><span class="badge secondary">Remote</span></div>
           </article>
           <article class="item work">
@@ -198,7 +203,11 @@ kbd span{font-size:12px}
               </div>
               <h4>Software Engineering Intern</h4>
             </div>
-            <div class="item-body">Led development of internal applications to improve efficiency among the engineering teams.</div>
+            <div class="item-body">Led development of an internal SharePoint-hosted application using Python RegEx and the ChatGPT API to extract compliance requirements from technical specifications, automating the workflow with Power Automate.
+              <ul>
+                <li>Selected by management to serve as Project Lead for the intern team, providing sprint updates and communicating project progress to leadership daily.</li>
+              </ul>
+            </div>
             <div class="badges m-badges"><span class="badge secondary">Remote</span></div>
           </article>
         </div>
@@ -320,12 +329,36 @@ kbd span{font-size:12px}
     <div class="fade" style="animation-delay:600ms">
       <section>
         <h2>Reading</h2>
-        <div class="car">
-          <button class="icon arrow" id="prev" aria-label="Previous months"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
-          <div class="viewport"><div class="track" id="track"></div></div>
-          <button class="icon arrow" id="next" aria-label="Next months"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+        <div class="reading">
+          <ul class="reading-col">
+            <li><span class="month">Jan 2025</span><span class="book-title">Can't Hurt Me</span></li>
+            <li><span class="month">Feb 2025</span><span class="book-title">Living with a SEAL</span></li>
+            <li><span class="month">Mar 2025</span><span class="book-title">Bringing Out the Best in People</span></li>
+            <li><span class="month">Apr 2025</span><span class="book-title">Think and Grow Rich</span></li>
+            <li><span class="month">May 2025</span><span class="book-title">The Psychology of Winning</span></li>
+            <li><span class="month">Jun 2025</span><span class="book-title">Wuhan Diary</span></li>
+            <li><span class="month">Jul 2025</span><span class="book-title">Becoming Supernatural</span></li>
+            <li><span class="month">Aug 2025</span><span class="book-title">Meditations</span></li>
+            <li><span class="month">Sep 2025</span><span class="book-title">The Bitcoin Standard</span></li>
+            <li><span class="month">Oct 2025</span><span class="book-title">Atomic Habits</span></li>
+            <li><span class="month">Nov 2025</span><span class="book-title">Make Your Bed</span></li>
+            <li><span class="month">Dec 2025</span><span class="book-title">How to Win Friends and Influence People</span></li>
+          </ul>
+          <ul class="reading-col">
+            <li><span class="month">Jan 2026</span><span class="book-title">Unbeatable Mind</span></li>
+            <li><span class="month">Feb 2026</span><span class="book-title">The Art of Extraordinary Confidence</span></li>
+            <li><span class="month">Mar 2026</span><span class="book-title">Wisdom of the Bullfrog</span></li>
+            <li><span class="month">Apr 2026</span><span class="book-title">Thinking, Fast and Slow</span></li>
+            <li><span class="month">May 2026</span><span class="book-title">Extreme Ownership</span></li>
+            <li><span class="month">Jun 2026</span><span class="book-title">Peak</span></li>
+            <li><span class="month">Jul 2026</span><span class="book-title">The Undoing Project</span></li>
+            <li><span class="month">Aug 2026</span><span class="book-title">The Three-Body Problem</span></li>
+            <li><span class="month">Sep 2026</span><span class="book-title">Freedom of Money</span></li>
+            <li><span class="month">Oct 2026</span><span class="book-title"><span class="tbd">—</span></span></li>
+            <li><span class="month">Nov 2026</span><span class="book-title"><span class="tbd">—</span></span></li>
+            <li><span class="month">Dec 2026</span><span class="book-title"><span class="tbd">—</span></span></li>
+          </ul>
         </div>
-        <div class="pager" id="dots"></div>
       </section>
     </div>
 
@@ -355,47 +388,6 @@ kbd span{font-size:12px}
 </main>
 
 <script>
-// Reading carousel
-(function(){
-  var books=[
-    {month:'January',title:'Unbeatable Mind',author:'Mark Divine'},
-    {month:'February',title:'The Art of Extraordinary Confidence',author:'Aziz Gazipura'},
-    {month:'March',title:'Wisdom of the Bullfrog',author:'William H. McRaven'},
-    {month:'April',title:'Thinking, Fast and Slow',author:'Daniel Kahneman'},
-    {month:'May',title:'Extreme Ownership',author:'Jocko Willink & Leif Babin'},
-    {month:'June',title:'Peak',author:'Roland Smith'},
-    {month:'July',title:'The Undoing Project',author:'Michael Lewis'},
-    {month:'August',title:'The Three-Body Problem',author:'Cixin Liu'},
-    {month:'September',title:'Freedom of Money',author:'Chaopeng Zhao'},
-    {month:'October',title:'',author:''},
-    {month:'November',title:'',author:''},
-    {month:'December',title:'',author:''}
-  ];
-  var track=document.getElementById('track'), dotsEl=document.getElementById('dots');
-  var mq=window.matchMedia('(max-width:560px)'), perPage, pages, page=0;
-  function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
-  books.forEach(function(b){
-    var cell=document.createElement('div');cell.className='cell';
-    cell.innerHTML='<div class="card book"><p class="card-desc">'+esc(b.month)+'</p><h3 class="card-title">'+esc(b.title||'—')+'</h3>'+(b.author?'<p class="by">'+esc(b.author)+'</p>':'')+'</div>';
-    track.appendChild(cell);
-  });
-  function layout(){
-    perPage=mq.matches?1:3; pages=Math.ceil(books.length/perPage);
-    [].forEach.call(track.children,function(c){c.style.flexBasis=(100/perPage)+'%';});
-    dotsEl.innerHTML='';
-    for(var i=0;i<pages;i++){(function(idx){var d=document.createElement('button');d.setAttribute('aria-label','Go to page '+(idx+1));d.onclick=function(){page=idx;render();};dotsEl.appendChild(d);})(i);}
-    page=Math.min(page,pages-1); render();
-  }
-  function render(){
-    track.style.transform='translateX(-'+(page*100)+'%)';
-    [].forEach.call(dotsEl.children,function(d,j){d.className=j===page?'on':'';});
-  }
-  document.getElementById('prev').onclick=function(){page=(page-1+pages)%pages;render();};
-  document.getElementById('next').onclick=function(){page=(page+1)%pages;render();};
-  (mq.addEventListener?mq.addEventListener('change',layout):mq.addListener(layout));
-  layout();
-})();
-
 // Command menu (⌘J / Ctrl+J), same as cv.jarocki.me
 (function(){
   var groups=[
